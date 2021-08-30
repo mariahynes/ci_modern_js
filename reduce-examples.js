@@ -26,11 +26,6 @@ const students = [
         profession: 'Engineer',
         yrsExperience: 4
     },
-    {
-        name: 'Peter',
-        profession: 'Engineer',
-        yrsExperience: 6
-    },
 ];
 //totalling a specific object property
 theTotal = students.reduce((acc,curr) => acc + curr.yrsExperience,0);
@@ -38,7 +33,7 @@ console.log(theTotal);
 
 //grouping by a property and totalling the group:
 //decide first what the output result should look like:
-// { Developer: 9, Engineer: 10 }
+// { Developer: 9, Engineer: 4 }
 //create with 'longer-form' arrow function because this will be more than one line 
 //and will need a return statement
 //note that the first set of {} signifies the bountary of the call-back function and  
@@ -55,3 +50,25 @@ let experienceByProfession = students.reduce((acc, curr) => {
     return acc;
 },{});
 console.log(experienceByProfession);
+
+//grouping by profession and listing an array of employees per group:
+//{ Developer: ['Mark', 'Maria'], Engineer: {'Barry'}} <--- want this to be the result
+
+let professionArray = students.reduce((acc, curr) => {
+
+    let key = curr.profession;
+    let peopleArray = [];
+
+    if(!acc[key]){
+        acc[key] = [curr.name]
+    }else{
+        peopleArray = acc[key];
+        console.log("before:", acc[key]);
+        acc[key] = acc[key].push([curr.name]);
+        console.log("after:", acc[key]);
+    }
+
+    return acc;
+
+},{});
+console.log(professionArray);
