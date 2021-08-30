@@ -52,19 +52,17 @@ let experienceByProfession = students.reduce((acc, curr) => {
 console.log(experienceByProfession);
 
 //grouping by profession and listing an array of employees per group:
-//{ Developer: ['Mark', 'Maria'], Engineer: {'Barry'}} <--- want this to be the result
+//{ Developer: ['Mark', 'Maria'], Engineer: ['Barry']} <--- want this to be the result
 
 let professionArray = students.reduce((acc, curr) => {
 
     let key = curr.profession;
-    let peopleArray = [];
 
     if(!acc[key]){
         acc[key] = [curr.name]
     }else{
-        peopleArray = acc[key];
         console.log("before:", acc[key]);
-        acc[key] = acc[key].push([curr.name]);
+        acc[key].push(curr.name);
         console.log("after:", acc[key]);
     }
 
@@ -72,3 +70,5 @@ let professionArray = students.reduce((acc, curr) => {
 
 },{});
 console.log(professionArray);
+
+
