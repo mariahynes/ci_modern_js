@@ -25,12 +25,11 @@ const students = [
 ];
 
 const studentsWithIds = students.map(student => [student.id, student.name]);
-//console.log(studentsWithIds);
+console.log(studentsWithIds);
 
 const studentOjb = students.map(student => ({id: student['id'], name: student['name']}));
-//console.log(studentOjb);
+console.log(studentOjb);
 
 const ages = [32, 26, 28];
-//console.log(age);
 const studObjwAge = students.map((student, age) => ({...student,age:ages[age]}));
 console.log(studObjwAge);
